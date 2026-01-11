@@ -1,0 +1,161 @@
+[versions]
+# Project
+androidGradlePlugin = "8.13.2"
+playservicesGradlePlugin = "4.4.4"
+firebaseCrashlyticsGradlePlugin = "3.0.6"
+
+# AndroidX
+androidxCore = "1.17.0"
+androidxComposeBom = "2025.12.01"
+androidxStartUp = "1.2.0"
+androidxLifecycle = "2.10.0"
+androidxCoreSplashScreen = "1.2.0"
+androidxActivity = "1.12.2"
+androidxNavigation3 = "1.0.0"
+androidxDataStore = "1.2.0"
+androidxRoom = "2.8.4"
+androidxAppcompat = "1.7.1"
+androidxPaging = "3.3.6"
+androidxComposeRuntimeRetain = "1.11.0-alpha02"
+
+# Android
+androidPlayServicesLocation = "21.3.0"
+
+# Kotlin
+kotlin = "2.3.0"
+kotlinxCoroutines = "1.10.2"
+kotlinxSerializationJson = "1.9.0"
+ksp = "2.3.4"
+
+# Firebase
+firebaseBom = "34.7.0"
+
+# Coil
+coil = "3.3.0"
+
+# CoreDseugar
+androidDesugarJdkLibs = "2.1.5"
+
+# Metro
+metro = "0.9.3"
+
+# ETC
+timber = "5.0.1"
+composeStableMarker = "1.0.7"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+material = "1.13.0"
+
+[libraries]
+# AndroidX
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+androidx-startup = { group = "androidx.startup", name = "startup-runtime", version.ref = "androidxStartUp" }
+androidx-dataStore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidxDataStore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
+androidx-core-splashScreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidxCoreSplashScreen" }
+
+# AndroidX Compose
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+androidx-compose-runtime-retain = { group = "androidx.compose.runtime", name = "runtime-retain", version.ref = "androidxComposeRuntimeRetain" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
+
+# AndroidX Activity Compose
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
+
+# AndroidX Lifecycle
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewModel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "androidxLifecycle" }
+androidx-lifecycle-savedState = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "androidxLifecycle" }
+
+# AndroidX Room
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
+androidx-room-coroutine = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
+androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "androidxRoom" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" } # For Kotlin use Ksp instead of annotationProcessor
+
+# AndroidX Paging
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging" }
+androidx-paging-common = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "androidxPaging" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging" }
+
+# AndroidX Navigation
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "androidxNavigation3" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "androidxNavigation3" }
+
+# Android
+android-play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "androidPlayServicesLocation" }
+
+# Android ETC
+android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" } # coreLibraryDesugaring
+
+# kotlin
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlin-compose-compiler-extension = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
+
+# Firebase
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" } # For platform
+firebase-messageing = { group = "com.google.firebase", name = "firebase-messaging" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+
+# Coil
+coil-kt-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
+coil-kt-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-kt-svg = { group = "io.coil-kt.coil3", name = "coil-svg", version.ref = "coil" }
+
+# ETC
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+compose-stable-marker = { group = "com.github.skydoves", name = "compose-stable-marker", version.ref = "composeStableMarker" }
+
+# Dependencies of the included build-logic
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+[bundles]
+androidx-room = ["androidx-room-runtime", "androidx-room-coroutine", "androidx-room-paging"]
+androidx-paging = ["androidx-paging-runtime", "androidx-paging-common", "androidx-paging-compose"]
+androidx-lifecycle = ["androidx-lifecycle-runtime-compose", "androidx-lifecycle-viewModel-compose", "androidx-lifecycle-viewmodel-navigation3", "androidx-lifecycle-savedState"]
+coil = ["coil-kt-network", "coil-kt-compose", "coil-kt-svg"]
+
+[plugins]
+# Android Plugin
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+
+# Kotlin Plugin
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+# Metro
+metro = { id = "dev.zacsweers.metro", version.ref = "metro" }
+
+# ETC Plugin
+playServices = { id = "com.google.gms.google-services", version.ref = "playservicesGradlePlugin" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsGradlePlugin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+# Plugins defined by this project
+wordbook-android-application = { id = "wordbook.android.application", version = "unspecified" }
+wordbook-android-application-compose = { id = "wordbook.android.application.compose", version = "unspecified" }
+wordbook-android-feature-api = { id = "wordbook.android.feature.api", version = "unspecified" }
+wordbook-android-feature-impl = { id = "wordbook.android.feature.impl", version = "unspecified" }
+wordbook-android-library = { id = "wordbook.android.library", version = "unspecified" }
+wordbook-android-library-compose = { id = "wordbook.android.library.compose", version = "unspecified" }
+wordbook-jvm-library = { id = "wordbook.jvm.library", version = "unspecified" }
