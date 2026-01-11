@@ -26,9 +26,13 @@ tasks.register("createFeatureModule") {
         // settings.gradle.kts에 모듈 추가
         addToSettings(featureName)
 
+        // main:impl에 의존성 추가
+        addDependencyToMainImpl(featureName)
+
         println("✅ Feature modules created successfully!")
         println("   - feature:$featureName:api")
         println("   - feature:$featureName:impl")
+        println("   - Added dependencies to feature:main:impl")
         println("📝 Please sync your project")
     }
 }
@@ -38,6 +42,14 @@ fun String.toPascalCase(): String =
     this
         .split("-")
         .joinToString("") { it.capitalize() }
+
+// 하이픈으로 구분된 문자열을 camelCase로 변환 (projects 접근용)
+fun String.toCamelCase(): String =
+    this
+        .split("-")
+        .mapIndexed { index, part ->
+            if (index == 0) part else part.capitalize()
+        }.joinToString("")
 
 fun createApiModule(featureName: String) {
     val moduleDir = file("feature/$featureName/api")
@@ -143,5 +155,44 @@ include(":feature:$featureName:impl")
         println("✓ Added modules to settings.gradle.kts")
     } else {
         println("⚠ Modules already exist in settings.gradle.kts")
+    }
+}
+
+fun addDependencyToMainImpl(featureName: String) {
+    val mainImplGradle = file("feature/main/impl/build.gradle.kts")
+
+    if (!mainImplGradle.exists()) {
+        println("⚠ feature:main:impl module not found, skipping dependency addition")
+        return
+    }
+
+    val content = mainImplGradle.readText()
+    val camelCaseName = featureName.toCamelCase()
+
+    // 이미 의존성이 있는지 확인
+    if (content.contains("projects.feature.$camelCaseName.api")) {
+        println("⚠ Dependencies already exist in feature:main:impl")
+        return
+    }
+
+    // dependencies 블록 찾기
+    val dependenciesRegex = Regex("""(dependencies\s*\{)""")
+    val match = dependenciesRegex.find(content)
+
+    if (match != null) {
+        val dependenciesToAdd = """
+    implementation(projects.feature.$camelCaseName.api)
+    implementation(projects.feature.$camelCaseName.impl)"""
+
+        val insertPosition = match.range.last + 1
+        val newContent =
+            content.take(insertPosition) +
+                dependenciesToAdd +
+                content.substring(insertPosition)
+
+        mainImplGradle.writeText(newContent)
+        println("✓ Added dependencies to feature:main:impl")
+    } else {
+        println("⚠ Could not find dependencies block in feature:main:impl")
     }
 }

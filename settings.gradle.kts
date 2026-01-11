@@ -30,6 +30,5 @@ include(":core:di")
 include(":feature:main:impl")
 include(":feature:deck-list:api")
 include(":feature:deck-list:impl")
-
 include(":feature:deck-detail:api")
 include(":feature:deck-detail:impl")

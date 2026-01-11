@@ -9,4 +9,6 @@ android {
 dependencies {
     implementation(projects.feature.deckList.api)
     implementation(projects.feature.deckList.impl)
+    implementation(projects.feature.deckDetail.api)
+    implementation(projects.feature.deckDetail.impl)
 }
