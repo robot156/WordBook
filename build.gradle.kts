@@ -64,38 +64,38 @@ fun createApiModule(featureName: String) {
     javaDir.mkdirs()
     navigationDir.mkdirs()
     file("$resDir/values").mkdirs()
-
     file("$moduleDir/build.gradle.kts").writeText(
         """
-plugins {
-    alias(libs.plugins.wordbook.android.feature.api)
-}
-
-android {
-    namespace = "com.wordbook.feature.$packageName.api"
-}
-        """.trimIndent(),
+            |plugins {
+            |   alias(libs.plugins.wordbook.android.feature.api)
+            |}
+            |
+            |android {
+            |    namespace = "com.wordbook.feature.$packageName.api"
+            |}
+        """.trimMargin(),
     )
 
     file("$srcMainDir/AndroidManifest.xml").writeText(
         """
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-</manifest>
-        """.trimIndent(),
+            |<?xml version="1.0" encoding="utf-8"?>
+            |<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+            |</manifest>
+        """.trimMargin(),
     )
 
     // NavKey 파일 생성
     file("$navigationDir/${pascalCaseName}NavKey.kt").writeText(
         """
-package com.wordbook.feature.$packageName.api.navigation
-
-import androidx.navigation3.runtime.NavKey
-import kotlinx.serialization.Serializable
-
-@Serializable
-object ${pascalCaseName}NavKey : NavKey
-        """.trimIndent(),
+            |package com.wordbook.feature.$packageName.api.navigation
+            |
+            |import androidx.navigation3.runtime.NavKey
+            |import kotlinx.serialization.Serializable
+            |
+            |@Serializable
+            |object ${pascalCaseName}NavKey : NavKey
+            |
+        """.trimMargin(),
     )
 
     file("$javaDir/.gitkeep").writeText("")
@@ -116,26 +116,26 @@ fun createImplModule(featureName: String) {
 
     file("$moduleDir/build.gradle.kts").writeText(
         """
-plugins {
-    alias(libs.plugins.wordbook.android.feature.impl)
-}
-
-android {
-    namespace = "com.wordbook.feature.$packageName.impl"
-}
-
-dependencies {
-    implementation(project(":feature:$featureName:api"))
-}
-        """.trimIndent(),
+            |plugins {
+            |   alias(libs.plugins.wordbook.android.feature.impl)
+            |}
+            |
+            |android {
+            |   namespace = "com.wordbook.feature.$packageName.impl"
+            |}
+            |
+            |dependencies {
+            |    implementation(project(":feature:$featureName:api"))
+            |}
+        """.trimMargin(),
     )
 
     file("$srcMainDir/AndroidManifest.xml").writeText(
         """
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-</manifest>
-        """.trimIndent(),
+        |<?xml version="1.0" encoding="utf-8"?>
+        |<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+        |</manifest>
+        """.trimMargin(),
     )
 
     println("✓ Created impl module")
@@ -145,10 +145,11 @@ fun addToSettings(featureName: String) {
     val settingsFile = file("settings.gradle.kts")
     val content = settingsFile.readText()
 
-    val modulesToAdd = """
-include(":feature:$featureName:api")
-include(":feature:$featureName:impl")
-"""
+    val modulesToAdd =
+        """
+        |include(":feature:$featureName:api")
+        |include(":feature:$featureName:impl")
+        """.trimMargin()
 
     if (!content.contains(":feature:$featureName:api")) {
         settingsFile.appendText(modulesToAdd)
